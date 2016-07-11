@@ -40,10 +40,14 @@ public class ExportExcOfJxl {
 		OutputStream os = null;
 		WritableWorkbook wwb = null;
 		try {
-			String filePath = "E:/个人的一些文件（用于开发）/TransExc测试文件/最终文件/韵达电信费核对-测试.xls";
+			String filePath = "D:/apache-tomcat-6.0.37/webapps/TransExc/output/outputExcle.xls";
 			File file = new File(filePath);
-			if(!file.isFile())//如果指定文件不存在，则新建该文件
+			//如果指定文件不存在，则新建该文件
+			if(file.isFile()){
+				file.delete();
+			}else {
 				file.createNewFile();
+			}
 			os = new FileOutputStream(file);//创建一个输出流
 			wwb = Workbook.createWorkbook(os);
 			WritableSheet sheet = wwb.createSheet("明细表", 0);//创建一个工作页，第一个参数的页名，第二个参数表示该工作页在excel中处于哪一页

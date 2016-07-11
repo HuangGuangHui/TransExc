@@ -22,31 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-<body style="width: 190px;">
-<a href="<%=path %>/inputInDate.jsp" target="right">上传源数据</a>
-<br/>
-<a href="<%=path %>/inputOutDate.jsp" target="right">上传最终数据格式</a>
-<br/>
-<a href="<%=path %>/outputDate.jsp" target="right">导出</a>
-<br/>
-<a href="<%=basePath %>output/outputExcle.xls" target="right">下载文件</a>
-<br/>
-<br/>
-<br/>
-操作流程：
-<br/>
-1,先上传一个最终表，用于确定表的格式
-<br/>
-2,上传所有的源文件
-<br/>
-3,点击【处理数据】
-4，点击【生成Excle文件】
-5，点击【下载文件】可以下载
-<br/>
-注意：
-<br/>
-1,只是暂时的思路,后续会有更改
-<br/>
-2,只能读取xls文件，对xlsx文件不支持，如果是请转下格式
+<body style="background-color: gray;text-align: center;" >
+	<h1 style="margin-top: 30px;">韵达报表工具-IT部</h1>
 </body>
 </html>

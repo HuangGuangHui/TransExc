@@ -10,6 +10,8 @@ import jxl.Sheet;
 import com.zs.dao.BaseDaoOfHibe;
 import com.zs.dao.IBaseDaoOfSpring;
 import com.zs.entity.InDx;
+import com.zs.entity.InHz;
+import com.zs.entity.InYd;
 import com.zs.entity.OutDxDetail;
 import com.zs.file.Copy;
 import com.zs.util.ExportExcOfJxl;
@@ -136,7 +138,60 @@ public class FileAction extends MyBaseAction{
 				}
 			}
 		}else if ("移动".equals(type)) {
-			
+			for (int i = 0; i < rsRows; i++){
+				Cell cell = readsheet.getCell(0, i);
+	    		//找纯数据，即所需要的数据
+	    		if ("序号".equals(cell.getContents().trim())) {
+	    			isBegin=true;
+	    			continue;
+				}
+	    		//保存数据
+	    		if (isBegin && !"".equals(readsheet.getCell(2, i).getContents().trim())) {
+	    			double cost,costMust;
+	    			if ("".equals(readsheet.getCell(4, i).getContents().trim())) {
+						cost=0;
+					}else {
+						cost=Double.valueOf(readsheet.getCell(4, i).getContents().trim());
+					}
+	    			if ("".equals(readsheet.getCell(5, i).getContents().trim())) {
+						costMust=0;
+					}else {
+						costMust=Double.valueOf(readsheet.getCell(5, i).getContents().trim());
+					}
+	    			InYd inYd=new InYd(
+	    					readsheet.getCell(1, i).getContents().trim(),
+	    					readsheet.getCell(2, i).getContents().trim(),
+	    					readsheet.getCell(3, i).getContents().trim(), 
+	    					cost,
+	    					costMust,
+	    					getTime());
+					dao.save(inYd);
+				}
+			}
+		}else if ("汇总".equals(type)) {
+			for (int i = 0; i < rsRows; i++){
+				Cell cell = readsheet.getCell(0, i);
+	    		//找纯数据，即所需要的数据
+	    		if ("产品号码".equals(cell.getContents().trim())) {
+	    			isBegin=true;
+	    			continue;
+				}
+	    		//保存数据
+	    		if (isBegin && !"".equals(readsheet.getCell(0, i).getContents().trim())) {
+	    			double cost;
+	    			if ("".equals(readsheet.getCell(2, i).getContents().trim())) {
+						cost=0;
+					}else {
+						cost=Double.valueOf(readsheet.getCell(2, i).getContents().trim());
+					}
+	    			InHz hz=new InHz(
+	    					readsheet.getCell(0, i).getContents().trim(),
+	    					readsheet.getCell(1, i).getContents().trim(),
+	    					cost,
+	    					getTime());
+					dao.save(hz);
+				}
+			}
 		}
 		excOfJxlZS.close();
 		return "inputIn";
@@ -185,14 +240,34 @@ public class FileAction extends MyBaseAction{
 	 * */
 	public String outEndDate() {
 		//查询原数据
-		List<InDx> list=dao.find("from InDx where month='"+getTime()+"'");
+		List<InDx> listDx=dao.find("from InDx where month='"+getTime()+"'");
+		List<InYd> listYd=dao.find("from InYd where month='"+getTime()+"'");
+		List<InHz> listHz=dao.find("from InHz where month='"+getTime()+"'");
 		//找到对应的数据，并将数据填入
-		for (int i = 0; i < list.size(); i++) {
-			InDx dx=list.get(i);
+		for (int i = 0; i < listDx.size(); i++) {
+			InDx dx=listDx.get(i);
 			List<OutDxDetail> details=dao.find("from OutDxDetail where equipmentNumber='"+dx.getEquipmentNumber()+"' and month='"+getTime()+"'");
 			if (details.size()>0) {
 				OutDxDetail detail=details.get(0);
 				detail.setMonthMonry(dx.getCostMustPay()+"");
+				dao.update(detail);
+			}
+		}
+		for (int i = 0; i < listYd.size(); i++) {
+			InYd yd=listYd.get(i);
+			List<OutDxDetail> details=dao.find("from OutDxDetail where equipmentNumber='"+yd.getEquipmentNumber()+"' and month='"+getTime()+"'");
+			if (details.size()>0) {
+				OutDxDetail detail=details.get(0);
+				detail.setMonthMonry(yd.getCostMustPay()+"");
+				dao.update(detail);
+			}
+		}
+		for (int i = 0; i < listHz.size(); i++) {
+			InHz hz=listHz.get(i);
+			List<OutDxDetail> details=dao.find("from OutDxDetail where equipmentNumber='"+hz.getEquipmentNumber()+"' and month='"+getTime()+"'");
+			if (details.size()>0) {
+				OutDxDetail detail=details.get(0);
+				detail.setMonthMonry(hz.getCost()+"");
 				dao.update(detail);
 			}
 		}

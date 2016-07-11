@@ -29,9 +29,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	</style>
   </head>
-  
-<frameset cols="200px,*" frameborder="yes">
-	<frame name="left" src="left.jsp" noresize="noresize"/>
-	<frame name="right" src="inputInDate.jsp" noresize="noresize"/>    
+<frameset rows="100px,*">
+	<frame name="top"  src="top.jsp" noresize="noresize"/>
+	<frameset cols="200px,*" frameborder="yes">
+		<frame name="left" src="left.jsp" noresize="noresize"/>
+		<frame name="right" src="inputInDate.jsp" noresize="noresize"/>    
+	</frameset>
 </frameset>
 </html>

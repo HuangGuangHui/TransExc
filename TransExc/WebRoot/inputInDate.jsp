@@ -39,6 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<br/>
     	<input name="type" type="radio" value="电信"/>电信
     	<input name="type" type="radio" value="移动"/>移动
+    	<input name="type" type="radio" value="汇总"/>汇总
     	<br/>
     	<input type="submit" value="上传源数据"/>
     </form>
