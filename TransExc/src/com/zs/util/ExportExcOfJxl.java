@@ -6,9 +6,17 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 
+import com.zs.entity.OutDxDetail;
+
+import jxl.Cell;
 import jxl.Workbook;
+import jxl.format.Alignment;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
 import jxl.format.UnderlineStyle;
+import jxl.format.VerticalAlignment;
 import jxl.write.DateFormat;
 import jxl.write.DateTime;
 import jxl.write.Label;
@@ -27,17 +35,72 @@ public class ExportExcOfJxl {
 	
 	
 	
-	public boolean export() {
+	public boolean export(List<OutDxDetail> data) {
+		boolean isSucc=false;
 		OutputStream os = null;
 		WritableWorkbook wwb = null;
 		try {
-			String filePath = "D:/test/韵达5月电信费核对.xls";
+			String filePath = "E:/个人的一些文件（用于开发）/TransExc测试文件/最终文件/韵达电信费核对-测试.xls";
 			File file = new File(filePath);
 			if(!file.isFile())//如果指定文件不存在，则新建该文件
-			file.createNewFile();
+				file.createNewFile();
 			os = new FileOutputStream(file);//创建一个输出流
 			wwb = Workbook.createWorkbook(os);
-			WritableSheet sheet = wwb.createSheet("sheet1", 0);//创建一个工作页，第一个参数的页名，第二个参数表示该工作页在excel中处于哪一页
+			WritableSheet sheet = wwb.createSheet("明细表", 0);//创建一个工作页，第一个参数的页名，第二个参数表示该工作页在excel中处于哪一页
+			
+			//第一种格式：居中，带边框
+			WritableCellFormat wcf1 =new WritableCellFormat();
+			wcf1.setAlignment(Alignment.CENTRE);// 对齐方式
+			wcf1.setVerticalAlignment(VerticalAlignment.CENTRE);
+			wcf1.setBorder(Border.ALL, BorderLineStyle.THIN);// 边框
+			//第一种格式：居左，带边框
+			WritableCellFormat wcf2 =new WritableCellFormat();
+			wcf2.setAlignment(Alignment.LEFT);// 对齐方式
+			wcf2.setVerticalAlignment(VerticalAlignment.CENTRE);
+			wcf2.setBorder(Border.ALL, BorderLineStyle.THIN);// 边框
+			
+			sheet.getSettings().setDefaultColumnWidth(20); // 设置列的默认宽度
+			// sheet.setRowView(2,false);//行高自动扩展
+			// setRowView(int row, int height);--行高
+			// setColumnView(int col,int width); --列宽
+			sheet.setColumnView(0, 6);// 设置第一列宽度
+			sheet.setRowView(0, 500);// 设置第一列高度
+			
+			String[] title={"序号","类型","二级部门","费用项目","备注","【多少】月份","一级部门","发票号码"};
+			for (int i = 0; i < title.length; i++) {
+				Label label=new Label(i, 0, title[i],wcf2);
+				sheet.addCell(label);
+			}
+			
+			Label label=null;
+			Number nb = null;
+			
+			for (int i = 0; i < data.size(); i++) {
+				OutDxDetail detail=data.get(i);
+					nb = new Number(0,i+1,i+1,wcf1);
+					sheet.addCell(nb);
+					label=new Label(1, i+1, detail.getType(),wcf2);
+					sheet.addCell(label);
+					label=new Label(2, i+1, detail.getDepartment(),wcf2);
+					sheet.addCell(label);
+					label=new Label(3, i+1, detail.getEquipmentNumber(),wcf2);
+					sheet.addCell(label);
+					label=new Label(4, i+1, detail.getNote(),wcf2);
+					sheet.addCell(label);
+					if ("".equals(detail.getMonthMonry())) {
+						label=new Label(5, i+1, detail.getMonthMonry(),wcf2);
+						sheet.addCell(label);
+					}else{
+						nb=new Number(5, i+1, Double.valueOf(detail.getMonthMonry()),wcf1);
+						sheet.addCell(nb);
+					}
+					label=new Label(6, i+1, detail.getFirstDepartment(),wcf2);
+					sheet.addCell(label);
+					label=new Label(7, i+1, detail.getInvoice(),wcf2);
+					sheet.addCell(label);
+			}
+			isSucc=true;
+			/*
 			//第一个参数表示列，第二个参数表示行
 			Label label = new Label(0,0,"test");//填充第一行第一个单元格的内容
 			sheet.addCell(label);
@@ -62,6 +125,7 @@ public class ExportExcOfJxl {
 			wcfFC.setBackground(jxl.format.Colour.RED);//设置单元格的颜色为红色 
 			label = new jxl.write.Label(0,6,"i love china",wcfFC);
 			sheet.addCell(label);
+			*/
 			wwb.write();//将内容写到excel文件中
 			os.flush();//清空输出流
 		} catch (FileNotFoundException e) {
@@ -82,6 +146,7 @@ public class ExportExcOfJxl {
 				e.printStackTrace();
 			}
 		}
-		return true;
+		return isSucc;
 	}
+	
 }

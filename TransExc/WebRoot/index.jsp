@@ -9,17 +9,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>首页</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	<script type="text/javascript">
-	</script>
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/demo/demo.css">
+	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.easyui.min.js"></script>
 	<style type="text/css">
 	form{
 		background-color: #E8FAFE;
@@ -30,37 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
   </head>
   
-  <body>
-    <form action="file!transtion" method="post" enctype="multipart/form-data">
-    	<input name="files" type="file"/>
-    	<br/>
-    	<input name="year" type="number"/>年
-    	<input name="month" type="number"/>月
-    	<br/>
-    	<input name="type" type="radio" value="来源"/>来源
-    	<input name="type" type="radio" value="最终"/>最终
-    	<br/>
-    	<input type="submit" value="上传数据"/>
-    </form>
-    <form action="file!outEndDate" method="post">
-    	<input name="year" type="number"/>年
-    	<input name="month" type="number"/>月
-    	<br/>
-    	<input type="submit" value="处理数据"/>
-    </form>
-    <br/>
-<pre>
-操作流程：
-1,先上传一个最终表，用于确定表的格式
-2,上传所有的源文件
-3,点击【处理数据】
-注意：只是暂时的思路。
-
-
-
-
-</pre>    
-    
-    
-  </body>
+<frameset cols="200px,*" frameborder="yes">
+	<frame name="left" src="left.jsp" noresize="noresize"/>
+	<frame name="right" src="inputInDate.jsp" noresize="noresize"/>    
+</frameset>
 </html>
