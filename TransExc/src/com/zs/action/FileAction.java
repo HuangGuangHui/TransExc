@@ -112,7 +112,7 @@ public class FileAction extends MyBaseAction{
 					}
 				}
         		//找纯数据，即所需要的数据
-        		if ("�豸��".equals(cell.getContents().trim())) {
+        		if ("设备号".equals(cell.getContents().trim())) {
         			isBegin=true;
         			continue;
 				}
@@ -149,8 +149,7 @@ public class FileAction extends MyBaseAction{
 			}
     	} 
 	    excOfJxlZS.close();
-	    outEndDate();
-	    return SUCCESS;
+	    return "safe";
 	}
 	
 	
@@ -160,7 +159,7 @@ public class FileAction extends MyBaseAction{
 	 * 根据原数据得到整理后的数据
 	 * */
 	
-	private void outEndDate() {
+	public String outEndDate() {
 		//查询原数据
 		List<InDx> list=dao.find("from InDx where month='"+getTime()+"'");
 		//找到对应的数据，并将数据填入
@@ -173,8 +172,15 @@ public class FileAction extends MyBaseAction{
 				dao.update(detail);
 			}
 		}
-		
+		return "safe";
 	}
 	
-	
+	/*
+	 * 2016年7月11日13:42:21
+	 * 张顺
+	 * 空方法用于实现安全刷新
+	 * */
+	public String safe() {
+		return SUCCESS;
+	}
 }

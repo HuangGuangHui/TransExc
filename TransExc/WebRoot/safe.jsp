@@ -31,36 +31,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <form action="file!transtion" method="post" enctype="multipart/form-data">
-    	<input name="files" type="file"/>
-    	<br/>
-    	<input name="year" type="number"/>年
-    	<input name="month" type="number"/>月
-    	<br/>
-    	<input name="type" type="radio" value="来源"/>来源
-    	<input name="type" type="radio" value="最终"/>最终
-    	<br/>
-    	<input type="submit" value="上传数据"/>
-    </form>
-    <form action="file!outEndDate" method="post">
-    	<input name="year" type="number"/>年
-    	<input name="month" type="number"/>月
-    	<br/>
-    	<input type="submit" value="处理数据"/>
-    </form>
-    <br/>
-<pre>
-操作流程：
-1,先上传一个最终表，用于确定表的格式
-2,上传所有的源文件
-3,点击【处理数据】
-注意：只是暂时的思路。
-
-
-
-
-</pre>    
-    
-    
+	<script type="text/javascript">
+		window.location.href="file!safe";
+	</script>
   </body>
 </html>

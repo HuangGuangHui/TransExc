@@ -6,6 +6,7 @@
 <package name="a" extends="struts-default" namespace="/">
   <action name="file" class="zs_file_ac">	
      <result>/index.jsp</result>
+     <result name="safe">/safe.jsp</result>
   </action>
 </package>
 </struts>    
