@@ -10,6 +10,12 @@
      <result name="output">/outputDate.jsp</result>
      <result name="safe">/safe.jsp</result>
   </action>
+  <action name="manual" class="zs_manual_ac">	
+     <result name="inputIn">/inputInDate.jsp</result>
+     <result name="inputOut">/inputOutDate.jsp</result>
+     <result name="output">/outputDate.jsp</result>
+     <result name="safe">/safe.jsp</result>
+ </action>
 </package>
 </struts>    
   

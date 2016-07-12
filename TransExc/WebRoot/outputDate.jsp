@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -44,19 +46,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  		</tr>
   		</table>
     	</form>
-	    <form action="file!exportExc" method="post">
     	<table width="580px;" border="0" align="center">
     		<tr>
-    			<td>
-			    	<input class="easyui-linkbutton" type="submit" value="生成Excle文件" style="padding: 5px;width: 100%;"/></td>
-    			</td>
-    		</tr>
-    		<tr>
     			<td style="padding-right: 12px;">
-    				<a href="<%=basePath %>output/outputExcle.xls" target="right" class="easyui-linkbutton" style="width:100%;margin-top: 15px;">下载文件</a>
+    				<a href="<%=basePath %>output/outputExcle.xls" target="right" class="easyui-linkbutton" style="width:100%;">下载文件</a>
     			</td>
     		</tr>
     	</table>
-	    </form>
+    </div>
+    <div class="easyui-panel" title="输出结果" style="width:600px;height:300px;padding: 5px;">
+    	耗时：${cost_time }
+    	<br/>
+    	电信数据异常：${fn:length(errorInDxs)}
+    	<br/>
+    	<c:forEach items="${errorInDxs}" var="dx">
+			设备号：${dx.equipmentNumber } | 金额：${dx.costMustPay }
+			<br/>  	
+    	</c:forEach>
+    	移动数据异常：${fn:length(errorInYds)}
+    	<br/>
+    	<c:forEach items="${errorInYds}" var="yd">
+			设备号：${yd.equipmentNumber } | 金额：${yd.costMustPay }
+			<br/>  	
+    	</c:forEach>
+    	汇总数据异常：${fn:length(errorInHzs)}
+    	<br/>
+    	<c:forEach items="${errorInHzs}" var="hz">
+			设备号：${hz.equipmentNumber } | 金额：${yd.cost }
+			<br/>  	
+    	</c:forEach>
+    </div>
   </body>
 </html>

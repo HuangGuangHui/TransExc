@@ -17,7 +17,9 @@
 	<bean id="zs_file_ac" class="com.zs.action.FileAction">
 		<property name="dao" ref="zs_dao"></property>
 	</bean>	
-	
+	<bean id="zs_manual_ac" class="com.zs.action.ManualModeAction">
+		<property name="dao" ref="zs_dao"></property>
+	</bean>	
 	
 	<!-- ************************************* -->
 	<bean id="zs_dao" class="com.zs.dao.BaseDaoOfSpring">

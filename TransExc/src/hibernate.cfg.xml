@@ -25,6 +25,7 @@
 	<mapping resource="com/zs/entity/InDx.hbm.xml" />
 	<mapping resource="com/zs/entity/InYd.hbm.xml" />
 	<mapping resource="com/zs/entity/InHz.hbm.xml" />
+	<mapping resource="com/zs/entity/ModelOutDxDetail.hbm.xml" />
 
 </session-factory>
 

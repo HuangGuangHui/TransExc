@@ -27,25 +27,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<div class="easyui-panel" title="上传最终模板" style="width:600px;padding: 5px;">
-	    <form action="file!uploadOutData" method="post" enctype="multipart/form-data">
-  		<table width="580px;" border="0" align="center">
-    		<tr>
-    			<td>上传最终模板</td>
-    			<td><input name="files" class="easyui-filebox" data-options="prompt:'Choose a file...'" style="width:100%"/></td>
-    		</tr>
-    		<tr>
-	  			<td>时间</td>
-	  			<td>
-	 				<input name="year" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>年
-	    			<input name="month" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>月 			
-	  			</td>
-	  		</tr>
-	  		<tr>
-	  			<td colspan="2"><input class="easyui-linkbutton" type="submit" value="上传最终数据" style="padding: 5px;width: 100%;margin-top: 15px;"/></td>
-	  		</tr>
-  		</table>
-    	</form>
+    <div class="easyui-tabs" style="width:600px;height: 170px;">
+    	<div title="上传最终模板" style="padding:10px">
+    		<form action="file!uploadOutData" method="post" enctype="multipart/form-data">
+	  		<table width="580px;" border="0" align="center">
+	    		<tr>
+	    			<td>最终模板文件</td>
+	    			<td><input name="files" class="easyui-filebox" data-options="prompt:'Choose a file...'" style="width:100%"/></td>
+	    		</tr>
+	    		<tr>
+		  			<td>时间</td>
+		  			<td>
+		 				<input name="year" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>年
+		    			<input name="month" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>月 			
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td colspan="2"><input class="easyui-linkbutton" type="submit" value="上传最终数据" style="padding: 5px;width: 100%;margin-top: 15px;"/></td>
+		  		</tr>
+	  		</table>
+	    	</form>
+    	</div>
+    	<div title="选择最终模板" style="padding:10px">
+    		<table width="580px;" border="0" align="center">
+    			<tr>
+    				<td>选择一个模板</td>
+    				<td>
+    					<select>
+    						<option>模板1</option>
+    						<option>模板2</option>
+    						<option>模板3</option>
+    						<option>模板4</option>
+    					</select>
+    				</td>
+    			</tr>
+    			<tr>
+		  			<td>时间</td>
+		  			<td>
+		 				<input name="year" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>年
+		    			<input name="month" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>月 			
+		  			</td>
+		  		</tr>
+    			<tr>
+    				<td colspan="2"> 
+    					<input class="easyui-linkbutton" type="submit" value="确定选择" style="padding: 5px;width: 100%;margin-top: 15px;"/>
+    				</td>
+    			</tr>
+    		</table>
+		</div>
     </div>
   </body>
 </html>

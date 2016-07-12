@@ -2,6 +2,7 @@ package com.zs.action;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import jxl.Cell;
@@ -27,6 +28,11 @@ public class FileAction extends MyBaseAction{
 	private String time;
 	String type;
 	IBaseDaoOfSpring dao;
+	//以下是用来保存出现异常的数据
+	List<InDx> errorInDxs=new ArrayList<InDx>();
+	List<InYd> errorInYds=new ArrayList<InYd>();
+	List<InHz> errorInHzs=new ArrayList<InHz>();
+	List<OutDxDetail> errorDetails=new ArrayList<OutDxDetail>();
 	
 	
 	public String getTime() {
@@ -34,6 +40,30 @@ public class FileAction extends MyBaseAction{
 	}
 	public IBaseDaoOfSpring getDao() {
 		return dao;
+	}
+	public List<InDx> getErrorInDxs() {
+		return errorInDxs;
+	}
+	public void setErrorInDxs(List<InDx> errorInDxs) {
+		this.errorInDxs = errorInDxs;
+	}
+	public List<InYd> getErrorInYds() {
+		return errorInYds;
+	}
+	public void setErrorInYds(List<InYd> errorInYds) {
+		this.errorInYds = errorInYds;
+	}
+	public List<InHz> getErrorInHzs() {
+		return errorInHzs;
+	}
+	public void setErrorInHzs(List<InHz> errorInHzs) {
+		this.errorInHzs = errorInHzs;
+	}
+	public List<OutDxDetail> getErrorDetails() {
+		return errorDetails;
+	}
+	public void setErrorDetails(List<OutDxDetail> errorDetails) {
+		this.errorDetails = errorDetails;
 	}
 	public void setDao(IBaseDaoOfSpring dao) {
 		this.dao = dao;
@@ -106,6 +136,10 @@ public class FileAction extends MyBaseAction{
 	    			isBegin=true;
 	    			continue;
 				}
+	    		if ("合计:".equals(cell.getContents().trim())) {
+					isBegin=false;
+	    			continue;
+				}
 	    		//保存数据
 	    		if (isBegin) {
 	    			String str=readsheet.getCell(7, i).getContents().trim();
@@ -117,7 +151,16 @@ public class FileAction extends MyBaseAction{
 							ss2.add(ss1[j]);
 						}
 					}
-					InDx inDx=new InDx(readsheet.getCell(0, i).getContents().trim(),
+	    			/*
+	    			 * 避免上传了重复的数据，每次遇到重复的，就会先删除原来的再上传现在的。
+	    			 * */
+	    			List<InDx> dxs=dao.find("from InDx where equipmentNumber='"+readsheet.getCell(0, i).getContents().trim()+"' and month='"+getTime()+"'");
+	    			for (int j = 0; j < dxs.size(); j++) {
+						dao.delete(dxs.get(j));
+					}
+	    			
+					InDx inDx=new InDx(
+							readsheet.getCell(0, i).getContents().trim(),
 	    					readsheet.getCell(1, i).getContents().trim(),
 	    					Double.valueOf(ss2.get(0).trim()),
 	    					Double.valueOf(ss2.get(1).trim()),
@@ -135,6 +178,8 @@ public class FileAction extends MyBaseAction{
 	    					Double.valueOf(ss2.get(13).trim()),
 	    					getTime());
 					dao.save(inDx);
+					
+					
 				}
 			}
 		}else if ("移动".equals(type)) {
@@ -157,6 +202,13 @@ public class FileAction extends MyBaseAction{
 						costMust=0;
 					}else {
 						costMust=Double.valueOf(readsheet.getCell(5, i).getContents().trim());
+					}
+	    			/*
+	    			 * 避免上传了重复的数据，每次遇到重复的，就会先删除原来的再上传现在的。
+	    			 * */
+	    			List<InYd> inYds=dao.find("from InYd where equipmentNumber='"+readsheet.getCell(2, i).getContents().trim()+"' and month='"+getTime()+"'");
+	    			for (int j = 0; j < inYds.size(); j++) {
+						dao.delete(inYds.get(j));
 					}
 	    			InYd inYd=new InYd(
 	    					readsheet.getCell(1, i).getContents().trim(),
@@ -183,6 +235,13 @@ public class FileAction extends MyBaseAction{
 						cost=0;
 					}else {
 						cost=Double.valueOf(readsheet.getCell(2, i).getContents().trim());
+					}
+	    			/*
+	    			 * 避免上传了重复的数据，每次遇到重复的，就会先删除原来的再上传现在的。
+	    			 * */
+	    			List<InHz> hzs=dao.find("from InHz where equipmentNumber='"+readsheet.getCell(0, i).getContents().trim()+"' and month='"+getTime()+"'");
+	    			for (int j = 0; j < hzs.size(); j++) {
+						dao.delete(hzs.get(j));
 					}
 	    			InHz hz=new InHz(
 	    					readsheet.getCell(0, i).getContents().trim(),
@@ -213,15 +272,23 @@ public class FileAction extends MyBaseAction{
         //更具类型判断
     	for (int i = 0; i < rsRows; i++){   
     		Cell cell = readsheet.getCell(0, i);
-    		if ("序号".equals(cell.getContents())) {
+    		if ("序号".equals(cell.getContents()) || "".equals(readsheet.getCell(3, i).getContents().trim())) {
             	continue;
             }else {
+            	/*
+    			 * 避免上传了重复的数据，每次遇到重复的，就会先删除原来的再上传现在的。
+    			 * */
+    			List<OutDxDetail> details=dao.find("from OutDxDetail where equipmentNumber='"+readsheet.getCell(3, i).getContents().trim()+"' and month='"+getTime()+"'");
+    			for (int j = 0; j < details.size(); j++) {
+					dao.delete(details.get(j));
+				}
+    			//不用担心是否上传了带数据的模板，上传时程序会自动滤过该列数据
         		OutDxDetail detail=new OutDxDetail(
         				readsheet.getCell(1, i).getContents().trim(),
         				readsheet.getCell(2, i).getContents().trim(),
         				readsheet.getCell(3, i).getContents().trim(),
         				readsheet.getCell(6, i).getContents().trim(),
-        				readsheet.getCell(7, i).getContents().trim(),
+        				"",
         				readsheet.getCell(8, i).getContents().trim(),
         				readsheet.getCell(9, i).getContents().trim(),
         				getTime());
@@ -239,6 +306,9 @@ public class FileAction extends MyBaseAction{
 	 * 根据原数据得到整理后的数据
 	 * */
 	public String outEndDate() {
+		//两个时间，用于计算耗时
+		long starTime=System.currentTimeMillis();
+		cleanList();
 		//查询原数据
 		List<InDx> listDx=dao.find("from InDx where month='"+getTime()+"'");
 		List<InYd> listYd=dao.find("from InYd where month='"+getTime()+"'");
@@ -251,6 +321,8 @@ public class FileAction extends MyBaseAction{
 				OutDxDetail detail=details.get(0);
 				detail.setMonthMonry(dx.getCostMustPay()+"");
 				dao.update(detail);
+			}else {
+				errorInDxs.add(dx);
 			}
 		}
 		for (int i = 0; i < listYd.size(); i++) {
@@ -260,6 +332,8 @@ public class FileAction extends MyBaseAction{
 				OutDxDetail detail=details.get(0);
 				detail.setMonthMonry(yd.getCostMustPay()+"");
 				dao.update(detail);
+			}else {
+				errorInYds.add(yd);
 			}
 		}
 		for (int i = 0; i < listHz.size(); i++) {
@@ -269,9 +343,15 @@ public class FileAction extends MyBaseAction{
 				OutDxDetail detail=details.get(0);
 				detail.setMonthMonry(hz.getCost()+"");
 				dao.update(detail);
+			}else {
+				errorInHzs.add(hz);
 			}
 		}
-		return "output";
+		//用于计算耗时
+		long endTime=System.currentTimeMillis();
+		getRequest().setAttribute("cost_time", endTime-starTime);
+		System.out.println("耗时-->>"+(endTime-starTime)); 
+		return exportExc();
 	}
 	
 	/*
@@ -296,5 +376,25 @@ public class FileAction extends MyBaseAction{
 	 * */
 	public String safe() {
 		return SUCCESS;
+	}
+	
+	
+	/*2016年7月12日14:44:51
+	 * 张顺
+	 * 清理四个用来保存异常数据的list
+	 * */
+	private void cleanList() {
+		for (int i = 0; i < errorInDxs.size(); i++) {
+			errorInDxs.remove(errorInDxs.get(i));
+		}
+		for (int i = 0; i < errorInYds.size(); i++) {
+			errorInYds.remove(errorInYds.get(i));
+		}
+		for (int i = 0; i < errorInHzs.size(); i++) {
+			errorInHzs.remove(errorInHzs.get(i));
+		}
+		for (int i = 0; i < errorDetails.size(); i++) {
+			errorDetails.remove(errorDetails.get(i));
+		}
 	}
 }
