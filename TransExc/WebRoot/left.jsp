@@ -16,37 +16,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/demo/demo.css">
+	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.easyui.min.js"></script>
 
   </head>
   
-<body style="width: 190px;">
-<a href="<%=path %>/inputInDate.jsp" target="right">上传源数据</a>
-<br/>
-<a href="<%=path %>/inputOutDate.jsp" target="right">上传最终数据格式</a>
-<br/>
-<a href="<%=path %>/outputDate.jsp" target="right">导出</a>
-<br/>
-<a href="<%=basePath %>output/outputExcle.xls" target="right">下载文件</a>
-<br/>
-<br/>
-<br/>
-操作流程：
-<br/>
-1,先上传一个最终表，用于确定表的格式
-<br/>
-2,上传所有的源文件
-<br/>
-3,点击【处理数据】
-4，点击【生成Excle文件】
-5，点击【下载文件】可以下载
-<br/>
-注意：
-<br/>
-1,只是暂时的思路,后续会有更改
-<br/>
-2,只能读取xls文件，对xlsx文件不支持，如果是请转下格式
+<body style="width: 200px;margin: 0px;padding: 0px;background-color: #E8FFFF;">
+
+<div class="easyui-accordion" style="width:200px;height:300px;">
+	<div title="上传数据与模板" data-options="iconCls:'icon-add'" style="overflow:auto;padding:10px;">
+		<a href="<%=path %>/inputInDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%">上传源数据</a>
+		<a href="<%=path %>/inputOutDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 5px;">上传最终模板</a>		
+	</div>
+	<div title="导出" data-options="iconCls:'icon-print'" style="padding:10px;">
+		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%">导出数据与文件</a>
+	</div>
+	<div title="使用说明和注意事项" data-options="iconCls:'icon-help'" style="padding:5px;">
+		操作流程：
+		<br/>
+		1,依次上传所有的源文件
+		<br/>
+		2,上传最终数据的模板
+		<br/>
+		3,导出数据与文件，先点【处理数据】，再点【生成Excle文件】
+		<br/>
+		4，下载文件
+		<br/>
+		注意：
+		<br/>
+		1,只能读取xls文件，对xlsx文件不支持，如果是请转下格式
+	</div>
+</div>
 </body>
 </html>

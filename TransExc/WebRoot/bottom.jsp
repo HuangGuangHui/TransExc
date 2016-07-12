@@ -22,7 +22,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-<body style="background-color: #97CBFF;text-align: center;" >
-	<h1 style="margin-top: 30px;color: white;">韵达报表工具-IT部</h1>
+<body style="background-color: #EAEAEA;" >
+	<center style="margin-top: 17px;">
+		<font color="#808080" size="1">
+			责任负责：韵达IT部 | 2016年7月12日11:02:56
+		</font>
+	</center>
 </body>
 </html>
