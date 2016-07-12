@@ -11,6 +11,11 @@
      <result name="safe">/safe.jsp</result>
   </action>
   <action name="manual" class="zs_manual_ac">	
+     <result name="manualInDx">/manualInDx.jsp</result>
+     <result name="manualInYd">/manualInYd.jsp</result>
+     <result name="manualInHz">/manualInHz.jsp</result>
+ </action>
+ <action name="model" class="zs_model_ac">	
      <result name="inputIn">/inputInDate.jsp</result>
      <result name="inputOut">/inputOutDate.jsp</result>
      <result name="output">/outputDate.jsp</result>

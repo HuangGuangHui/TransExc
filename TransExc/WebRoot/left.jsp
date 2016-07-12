@@ -35,9 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%">导出数据与文件</a>
 	</div>
 	<div title="手动模式" data-options="iconCls:'icon-large-shapes'" style="padding:10px;">
-		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%">手动调整电信表数据</a>
-		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">手动调整移动表数据</a>
-		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">手动调整汇总表数据</a>
+		<a href="<%=path %>/manual!queryDx" target="right" class="easyui-linkbutton c1" style="width:100%">手动调整电信表数据</a>
+		<a href="<%=path %>/manual!queryYd" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">手动调整移动表数据</a>
+		<a href="<%=path %>/manual!queryHz" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">手动调整汇总表数据</a>
 		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">手动调整最终表数据</a>
 	</div>
 	<div title="模板管理" data-options="iconCls:'icon-large-smartart'" style="padding:10px;">

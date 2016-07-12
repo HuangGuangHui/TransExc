@@ -29,10 +29,10 @@ public class FileAction extends MyBaseAction{
 	String type;
 	IBaseDaoOfSpring dao;
 	//以下是用来保存出现异常的数据
-	List<InDx> errorInDxs=new ArrayList<InDx>();
-	List<InYd> errorInYds=new ArrayList<InYd>();
-	List<InHz> errorInHzs=new ArrayList<InHz>();
-	List<OutDxDetail> errorDetails=new ArrayList<OutDxDetail>();
+	List<InDx> errorInDxs=null;
+	List<InYd> errorInYds=null;
+	List<InHz> errorInHzs=null;
+	List<OutDxDetail> errorDetails=null;
 	
 	
 	public String getTime() {
@@ -161,7 +161,7 @@ public class FileAction extends MyBaseAction{
 	    			
 					InDx inDx=new InDx(
 							readsheet.getCell(0, i).getContents().trim(),
-	    					readsheet.getCell(1, i).getContents().trim(),
+	    					readsheet.getCell(3, i).getContents().trim(),
 	    					Double.valueOf(ss2.get(0).trim()),
 	    					Double.valueOf(ss2.get(1).trim()),
 	    					Double.valueOf(ss2.get(2).trim()),
@@ -308,7 +308,6 @@ public class FileAction extends MyBaseAction{
 	public String outEndDate() {
 		//两个时间，用于计算耗时
 		long starTime=System.currentTimeMillis();
-		cleanList();
 		//查询原数据
 		List<InDx> listDx=dao.find("from InDx where month='"+getTime()+"'");
 		List<InYd> listYd=dao.find("from InYd where month='"+getTime()+"'");
@@ -322,6 +321,7 @@ public class FileAction extends MyBaseAction{
 				detail.setMonthMonry(dx.getCostMustPay()+"");
 				dao.update(detail);
 			}else {
+				errorInDxs=new ArrayList<InDx>();
 				errorInDxs.add(dx);
 			}
 		}
@@ -333,6 +333,7 @@ public class FileAction extends MyBaseAction{
 				detail.setMonthMonry(yd.getCostMustPay()+"");
 				dao.update(detail);
 			}else {
+				errorInYds=new ArrayList<InYd>();
 				errorInYds.add(yd);
 			}
 		}
@@ -344,6 +345,7 @@ public class FileAction extends MyBaseAction{
 				detail.setMonthMonry(hz.getCost()+"");
 				dao.update(detail);
 			}else {
+				errorInHzs=new ArrayList<InHz>();
 				errorInHzs.add(hz);
 			}
 		}
@@ -379,22 +381,4 @@ public class FileAction extends MyBaseAction{
 	}
 	
 	
-	/*2016年7月12日14:44:51
-	 * 张顺
-	 * 清理四个用来保存异常数据的list
-	 * */
-	private void cleanList() {
-		for (int i = 0; i < errorInDxs.size(); i++) {
-			errorInDxs.remove(errorInDxs.get(i));
-		}
-		for (int i = 0; i < errorInYds.size(); i++) {
-			errorInYds.remove(errorInYds.get(i));
-		}
-		for (int i = 0; i < errorInHzs.size(); i++) {
-			errorInHzs.remove(errorInHzs.get(i));
-		}
-		for (int i = 0; i < errorDetails.size(); i++) {
-			errorDetails.remove(errorDetails.get(i));
-		}
-	}
 }

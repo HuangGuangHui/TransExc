@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	汇总数据异常：${fn:length(errorInHzs)}
     	<br/>
     	<c:forEach items="${errorInHzs}" var="hz">
-			设备号：${hz.equipmentNumber } | 金额：${yd.cost }
+			设备号：${hz.equipmentNumber } | 金额：${hz.cost }
 			<br/>  	
     	</c:forEach>
     </div>
