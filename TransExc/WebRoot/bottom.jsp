@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body style="background-color: #EAEAEA;" >
 	<center style="margin-top: 17px;">
 		<font color="#808080" size="1">
-			责任负责：韵达IT部 | 2016年7月12日11:02:56
+			责任负责：韵达IT部 | 2016年7月12日
 		</font>
 	</center>
 </body>

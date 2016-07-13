@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="easyui-accordion" style="width:200px;height:300px;">
 	<div title="上传数据与模板" data-options="iconCls:'icon-add'" style="overflow:auto;padding:10px;">
 		<a href="<%=path %>/inputInDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%">上传源数据</a>
-		<a href="<%=path %>/inputOutDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">上传最终模板</a>		
+		<a href="<%=path %>/file!gotoInputOutDate" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">上传最终模板</a>		
 	</div>
 	<div title="导出" data-options="iconCls:'icon-print'" style="padding:10px;">
 		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%">导出数据与文件</a>
@@ -38,20 +38,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="<%=path %>/manual!queryDx" target="right" class="easyui-linkbutton c1" style="width:100%">手动调整电信表数据</a>
 		<a href="<%=path %>/manual!queryYd" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">手动调整移动表数据</a>
 		<a href="<%=path %>/manual!queryHz" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">手动调整汇总表数据</a>
-		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">手动调整最终表数据</a>
+		<a href="<%=path %>/manual!queryDetail" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">手动调整最终表数据</a>
 	</div>
 	<div title="模板管理" data-options="iconCls:'icon-large-smartart'" style="padding:10px;">
-		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%">查看模板</a>
-		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">添加模板</a>
-		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">修改模板</a>
-		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">删除模板</a>
+		<a href="<%=path %>/model!query" target="right" class="easyui-linkbutton c1" style="width:100%">查看模板</a>
+		<a href="<%=path %>/modelAdd.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">添加模板</a>
+		<a href="<%=path %>/model!update" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">修改模板</a>
+		<a href="<%=path %>/model!delete" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">删除模板</a>
 	</div>
 	<div title="使用说明和注意事项" data-options="iconCls:'icon-help'" style="padding:5px;">
 		操作流程：
 		<br/>
 		1,依次上传所有的源文件
 		<br/>
-		2,上传最终数据的模板
+		2,上传最终数据的模板或选择模板
 		<br/>
 		3,处理数据
 		<br/>

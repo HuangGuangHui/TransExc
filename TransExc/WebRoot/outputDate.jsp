@@ -29,8 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  
-  
   	<div class="easyui-panel" title="导出数据与文件" style="width:600px;padding: 5px;">
 	    <form action="file!outEndDate" method="post">
   		<table width="580px;" border="0" align="center">
@@ -54,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     	</table>
     </div>
-    <div class="easyui-panel" title="输出结果" style="width:600px;height:300px;padding: 5px;">
+    <div class="easyui-panel" title="输出结果" style="width:600px;height:300px;padding: 5px;text-align: left;">
     	耗时：${cost_time }
     	<br/>
     	电信数据异常：${fn:length(errorInDxs)}

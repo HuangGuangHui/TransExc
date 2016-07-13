@@ -14,12 +14,13 @@
      <result name="manualInDx">/manualInDx.jsp</result>
      <result name="manualInYd">/manualInYd.jsp</result>
      <result name="manualInHz">/manualInHz.jsp</result>
+     <result name="manualDetail">/manualDetail.jsp</result>
  </action>
  <action name="model" class="zs_model_ac">	
-     <result name="inputIn">/inputInDate.jsp</result>
-     <result name="inputOut">/inputOutDate.jsp</result>
-     <result name="output">/outputDate.jsp</result>
-     <result name="safe">/safe.jsp</result>
+     <result name="modelQuery">/modelQuery.jsp</result>
+     <result name="modelAdd">/modelAdd.jsp</result>
+     <result name="modelUpdate">/modelUpdate.jsp</result>
+     <result name="modelDelete">/modelDelete.jsp</result>
  </action>
 </package>
 </struts>    

@@ -34,5 +34,8 @@
         <property name="modelName" type="java.lang.String">
             <column name="model_name" />
         </property>
+        <property name="modelNameKey" type="java.lang.String">
+            <column name="model_name_key" />
+        </property>
     </class>
 </hibernate-mapping>

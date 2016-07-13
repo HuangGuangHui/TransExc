@@ -17,6 +17,7 @@ public class ModelOutDxDetail implements java.io.Serializable {
 	private String firstDepartment;
 	private String invoice;
 	private String modelName;
+	private String modelNameKey;
 
 	// Constructors
 
@@ -27,7 +28,8 @@ public class ModelOutDxDetail implements java.io.Serializable {
 	/** full constructor */
 	public ModelOutDxDetail(String type, String department,
 			String equipmentNumber, String note, String monthMonry,
-			String firstDepartment, String invoice, String modelName) {
+			String firstDepartment, String invoice, String modelName,
+			String modelNameKey) {
 		this.type = type;
 		this.department = department;
 		this.equipmentNumber = equipmentNumber;
@@ -36,6 +38,7 @@ public class ModelOutDxDetail implements java.io.Serializable {
 		this.firstDepartment = firstDepartment;
 		this.invoice = invoice;
 		this.modelName = modelName;
+		this.modelNameKey = modelNameKey;
 	}
 
 	// Property accessors
@@ -110,6 +113,14 @@ public class ModelOutDxDetail implements java.io.Serializable {
 
 	public void setModelName(String modelName) {
 		this.modelName = modelName;
+	}
+
+	public String getModelNameKey() {
+		return this.modelNameKey;
+	}
+
+	public void setModelNameKey(String modelNameKey) {
+		this.modelNameKey = modelNameKey;
 	}
 
 }

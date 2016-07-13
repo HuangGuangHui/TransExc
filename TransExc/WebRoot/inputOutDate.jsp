@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -49,15 +50,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	</form>
     	</div>
     	<div title="选择最终模板" style="padding:10px">
+    		<form action="file!selectModel" method="post">
     		<table width="580px;" border="0" align="center">
     			<tr>
     				<td>选择一个模板</td>
     				<td>
-    					<select>
-    						<option>模板1</option>
-    						<option>模板2</option>
-    						<option>模板3</option>
-    						<option>模板4</option>
+    					<select name="mname">
+    						<c:forEach items="${modelNames}" var="name">
+    							<option value="${name }">${name }</option>
+    						</c:forEach>
     					</select>
     				</td>
     			</tr>
@@ -74,6 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				</td>
     			</tr>
     		</table>
+    		</form>
 		</div>
     </div>
   </body>

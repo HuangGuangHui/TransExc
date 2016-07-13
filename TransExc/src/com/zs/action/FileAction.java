@@ -1,6 +1,7 @@
 package com.zs.action;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +14,7 @@ import com.zs.dao.IBaseDaoOfSpring;
 import com.zs.entity.InDx;
 import com.zs.entity.InHz;
 import com.zs.entity.InYd;
+import com.zs.entity.ModelOutDxDetail;
 import com.zs.entity.OutDxDetail;
 import com.zs.file.Copy;
 import com.zs.util.ExportExcOfJxl;
@@ -296,7 +298,7 @@ public class FileAction extends MyBaseAction{
 			}
     	}
 	    excOfJxlZS.close();
-	    return "inputOut";
+	    return gotoInputOutDate();
 	}
 	
 	
@@ -305,7 +307,11 @@ public class FileAction extends MyBaseAction{
 	 * 张顺
 	 * 根据原数据得到整理后的数据
 	 * */
-	public String outEndDate() {
+	public String outEndDate() throws UnsupportedEncodingException {
+		//清空集合
+		errorInDxs=null;
+		errorInYds=null;
+		errorInHzs=null;
 		//两个时间，用于计算耗时
 		long starTime=System.currentTimeMillis();
 		//查询原数据
@@ -381,4 +387,43 @@ public class FileAction extends MyBaseAction{
 	}
 	
 	
+	/*2016年7月13日10:43:10
+	 * 张顺
+	 * 作用是把模板的数据带过去
+	 * */
+	public String gotoInputOutDate() throws UnsupportedEncodingException {
+		List<String> modelNames=dao.find("select modelName from ModelOutDxDetail group by modelName");
+		getRequest().setAttribute("modelNames", modelNames);
+		return "inputOut";
+	}
+	
+	
+	public String selectModel() throws UnsupportedEncodingException {
+		String modelName=getRequest().getParameter("mname");
+		List<ModelOutDxDetail> models=dao.find("from ModelOutDxDetail where modelName='"+modelName+"'");
+		System.out.println(models.size()+modelName);
+		/*
+		 * 避免上传了重复的数据，每次遇到重复的，就会先删除原来的再上传现在的。
+		 * */
+		List<OutDxDetail> details=dao.find("from OutDxDetail where month='"+getTime()+"'");
+		for (int j = 0; j < details.size(); j++) {
+			dao.delete(details.get(j));
+		}
+		//不用担心是否上传了带数据的模板，上传时程序会自动滤过该列数据
+		for (int j = 0; j < models.size(); j++) {
+			ModelOutDxDetail m=models.get(j);
+			OutDxDetail detail=new OutDxDetail(
+				m.getType(),
+				m.getDepartment(),
+				m.getEquipmentNumber(),
+				m.getNote(),
+				m.getMonthMonry(),
+				m.getFirstDepartment(),
+				m.getInvoice(),
+				getTime()
+			);
+			dao.save(detail);
+		}
+		return gotoInputOutDate();
+	}
 }
