@@ -39,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		<tr>
 		  			<td>时间</td>
 		  			<td>
-		 				<input name="year" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>年
-		    			<input name="month" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>月 			
+		 				<input name="year" class="easyui-numberspinner" value="${year }" data-options="increment:1" style="width:120px;"/>年
+		    			<input name="month" class="easyui-numberspinner" value="${month }" data-options="increment:1" style="width:120px;"/>月 			
 		  			</td>
 		  		</tr>
 		  		<tr>
@@ -65,8 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<tr>
 		  			<td>时间</td>
 		  			<td>
-		 				<input name="year" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>年
-		    			<input name="month" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>月 			
+		 				<input name="year" class="easyui-numberspinner" value="${year }" data-options="increment:1" style="width:120px;"/>年
+		    			<input name="month" class="easyui-numberspinner" value="${month }" data-options="increment:1" style="width:120px;"/>月 			
 		  			</td>
 		  		</tr>
     			<tr>

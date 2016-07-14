@@ -26,6 +26,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="<%=path %>/js/myjs.js"></script>
 	
+	
+	<c:if test="${isSuc}">
+	<script type="text/javascript">
+		alert("生成文件成功!");
+	</script>
+	</c:if>
+	
   </head>
   
   <body>
@@ -35,14 +42,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<tr>
   				<td>请选择时间</td>
   				<td>
-  					<input name="year" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>年
-	    			<input name="month" class="easyui-numberspinner" value="1" data-options="increment:1" style="width:120px;"/>月
+  					<input name="year" class="easyui-numberspinner" value="${year }" data-options="increment:1" style="width:120px;" />年
+	    			<input name="month" class="easyui-numberspinner" value="${month }" data-options="increment:1" style="width:120px;"/>月
   				</td>
   			</tr>
   			<tr>
 	  			<td colspan="2"><input class="easyui-linkbutton" type="submit" value="处理数据" style="padding: 5px;width: 100%;margin-top: 15px;"/></td>
 	  		</tr>
   		</table>
+    	</form>
+    	<form action="file!exportExc" method="post">
+    		<input class="easyui-linkbutton" type="submit" value="生成文件" style="padding: 5px;width: 575px;margin-left: 7px;"/>
     	</form>
     	<table width="580px;" border="0" align="center">
     		<tr>

@@ -189,21 +189,25 @@ public class ModelManagerAction extends MyBaseAction{
 	public String addOrUpdateModel() throws UnsupportedEncodingException {
 		//获取cz，根据cz来决定采取哪种操作
 		String cz=getRequest().getParameter("cz");
+		String key=getRequest().getParameter("key");
+		List<ModelOutDxDetail> list=dao.find("from ModelOutDxDetail where modelNameKey='"+key+"'");
 		if (cz!=null) {
 			if (cz.equals("add")) {
 				if (mod.getEquipmentNumber()!=null 
 						&& !"".equals(mod.getEquipmentNumber().trim())
-						&& mod.getMonth()!=null 
-						&& !"".equals(mod.getMonth().trim())) {
+						) {
+					mod.setModelName(list.get(0).getModelName());
+					mod.setModelNameKey(list.get(0).getModelNameKey());
 					dao.save(mod);
 				}
 			}else if (cz.equals("update")) {
 				String id=getRequest().getParameter("id");
 				if (mod.getEquipmentNumber()!=null 
 						&& !"".equals(mod.getEquipmentNumber().trim())
-						&& mod.getMonth()!=null 
-						&& !"".equals(mod.getMonth().trim())) {
+						) {
 					mod.setId(Integer.valueOf(id));
+					mod.setModelName(list.get(0).getModelName());
+					mod.setModelNameKey(list.get(0).getModelNameKey());
 					dao.update(mod);
 				}
 			}

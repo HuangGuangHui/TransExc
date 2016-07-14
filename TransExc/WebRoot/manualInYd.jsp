@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input id="cz" name="cz" type="text" style="display: none;"/>
 			<input id="id" name="id" type="text" style="display: none;"/>
 			<div style="margin-bottom:20px">
-				<div>代付号码:</div>
+				<div>代付号码:<font color="red">*</font></div>
 				<input id="num" name="yd.equipmentNumber" type="text" style="width:100%;height:32px">
 			</div>
 			<div style="margin-bottom:20px">
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input name="yd.costMustPay" class="easyui-textbox" style="width:100%;height:32px">
 			</div>
 			<div style="margin-bottom:20px">
-				<div>月份:</div>
+				<div>月份:<font color="red">*</font></div>
 				<input id="month" name="yd.month" type="text" style="width:100%;height:32px">
 			</div>
 			<div>

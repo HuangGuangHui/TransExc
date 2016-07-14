@@ -358,8 +358,8 @@ public class FileAction extends MyBaseAction{
 		//用于计算耗时
 		long endTime=System.currentTimeMillis();
 		getRequest().setAttribute("cost_time", endTime-starTime);
-		System.out.println("耗时-->>"+(endTime-starTime)); 
-		return exportExc();
+//		System.out.println("耗时-->>"+(endTime-starTime)); 
+		return "output";
 	}
 	
 	/*
@@ -367,11 +367,15 @@ public class FileAction extends MyBaseAction{
 	 * 张顺
 	 * 生成最终的Excle文件
 	 * */
-	public String exportExc() {
+	public String exportExc() throws UnsupportedEncodingException {
+//		errorInDxs=null;
+//		errorInYds=null;
+//		errorInHzs=null;
 		//查询最终表数据
-		List<OutDxDetail> list=dao.find("from OutDxDetail");
+		List<OutDxDetail> list=dao.find("from OutDxDetail where month='"+getTime()+"'");
 		boolean isSuc=new ExportExcOfJxl().export(list); 
-		System.out.println("-------成功与否------>>"+isSuc);
+//		System.out.println("-------成功与否------>>"+isSuc);
+		getRequest().setAttribute("isSuc", isSuc);
 		return "output";
 	}
 	

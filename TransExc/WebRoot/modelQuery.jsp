@@ -79,12 +79,12 @@ request.setCharacterEncoding("utf-8");
 		<a href="javascript:void(0)" class="icon-add" onclick="add()"></a>
 	</div>
 	<div id="w" class="easyui-window" title="添加" data-options="iconCls:'icon-save'" style="width:500px;height:600px;padding:5px;">
-		<form action="manual!addOrUpdateModel" method="post">
+		<form action="model!addOrUpdateModel" method="post">
 			<input id="cz" name="cz" type="text" style="display: none;"/>
 			<input id="id" name="id" type="text" style="display: none;"/>
 			<input id="nameKey" name="nameKey" type="text" style="display: none;"/>
 			<div style="margin-bottom:20px">
-				<div>项目号码:</div>
+				<div>项目号码:<font color="red">*</font></div>
 				<input id="num" name="mod.equipmentNumber" type="text" style="width:100%;height:32px">
 			</div>
 			<div style="margin-bottom:20px">
@@ -100,10 +100,6 @@ request.setCharacterEncoding("utf-8");
 				<input name="mod.note" class="easyui-textbox" style="width:100%;height:32px">
 			</div>
 			<div style="margin-bottom:20px">
-				<div>月花费金额:</div>
-				<input name="mod.monthMonry" class="easyui-textbox" style="width:100%;height:32px">
-			</div>
-			<div style="margin-bottom:20px">
 				<div>一级部门:</div>
 				<input name="mod.firstDepartment" class="easyui-textbox" style="width:100%;height:32px">
 			</div>
@@ -112,7 +108,7 @@ request.setCharacterEncoding("utf-8");
 				<input name="mod.invoice" class="easyui-textbox" style="width:100%;height:32px">
 			</div>
 			<div style="margin-bottom:20px">
-				<div>模板:
+				<div>模板:<font color="red">*</font>
 					<select id="key" name="key">
 						<c:forEach items="${models}" var="model">
 						<option value="${model.modelNameKey }">${model.modelName}</option>
@@ -144,7 +140,7 @@ request.setCharacterEncoding("utf-8");
 				<td>类型</td>
 				<td>二级部门</td>
 				<td>备注</td>
-				<td>费用项目</td>
+				<td>项目号码</td>
 				<td>一级部门</td>
 				<td>发票号码</td>
 				<td>操作</td>
