@@ -22,7 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-<body style="background-color: #97CBFF;text-align: center;" >
-	<h1 style="margin-top: 30px;color: white;">韵达报表工具-IT部</h1>
+<body style="background-color: #F9BE00;margin: 0px;padding: 0px;" >
+	<div style="margin-left: 30px;margin-top: 25px;">
+		<img alt="" src="image/logo2.png" height="50" border="0"/>
+	</div>
+	<center style="margin-top: -52px;">
+		<span style="color: #282828;font-size: 40px;font-weight: bold;font-family: Microsoft YaHei;">通讯费用管理系统</span>
+	</center>
 </body>
 </html>

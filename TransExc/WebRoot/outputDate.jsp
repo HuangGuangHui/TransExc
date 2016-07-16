@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	
 	<link href="<%=path %>/css/mycss.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/gray/easyui.css">
 	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/demo/demo.css">
 	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.min.js"></script>
@@ -35,8 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
   </head>
   
-  <body>
-  	<div class="easyui-panel" title="导出数据与文件" style="width:600px;padding: 5px;">
+  <body style="padding: 5px;">
+  	<div class="easyui-layout" fit="true">
+  	<div region="north" title="导出数据与文件" style="width:100%;height:210px; padding: 5px;">
 	    <form action="file!outEndDate" method="post">
   		<table width="580px;" border="0" align="center">
   			<tr>
@@ -51,9 +52,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  		</tr>
   		</table>
     	</form>
+    	<CENTER style="margin-left: -20px;">
     	<form action="file!exportExc" method="post">
     		<input class="easyui-linkbutton" type="submit" value="生成文件" style="padding: 5px;width: 575px;margin-left: 7px;"/>
     	</form>
+    	</CENTER>
     	<table width="580px;" border="0" align="center">
     		<tr>
     			<td style="padding-right: 12px;">
@@ -62,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     	</table>
     </div>
-    <div class="easyui-panel" title="输出结果" style="width:600px;height:300px;padding: 5px;text-align: left;">
+    <div region="center" title="输出结果" style="width:100%;height:inherit;padding: 5px;text-align: left;">
     	耗时：${cost_time }
     	<br/>
     	电信数据异常：${fn:length(errorInDxs)}
@@ -83,6 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			设备号：${hz.equipmentNumber } | 金额：${hz.cost }
 			<br/>  	
     	</c:forEach>
+    </div>
     </div>
   </body>
 </html>

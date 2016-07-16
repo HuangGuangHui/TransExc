@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	
 	<link href="<%=path %>/css/mycss.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/gray/easyui.css">
 	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/demo/demo.css">
 	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.min.js"></script>
@@ -29,11 +29,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body>
-  	<CENTER>
-  	<div style="padding:10px;text-align: center;font-size: 18px;">修改模板名称</div>
+  <body style="padding: 5px;">
+  	<div class="easyui-panel" title="修改模板" style="width:100%;padding:10px;height: auto;" data-options="tools:'#tt'">
   	<form action="model!update" method="post">
-  	<table width="500" border="0">
+  	<table width="500" border="0" align="center">
   		<tr>
   			<td>请选择模板</td>
   			<td>
@@ -57,6 +56,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</tr>
   	</table>
   	</form>
-  	</CENTER>
+  	</div>
   </body>
 </html>

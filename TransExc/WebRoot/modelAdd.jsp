@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	
 	<link href="<%=path %>/css/mycss.css"/>
-	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/gray/easyui.css">
 	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/demo/demo.css">
 	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.min.js"></script>
@@ -28,13 +28,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body>
-  	<div style="padding:10px;text-align: center;font-size: 18px;">添加模板</div>
+  <body style="padding: 5px;">
+  	<div class="easyui-panel" title="添加模板" style="width:100%;padding:10px;height: auto;" data-options="tools:'#tt'">
   	<form action="model!add" method="post" enctype="multipart/form-data">
 	<table width="580px;" border="0" align="center">
    		<tr>
    			<td>最终模板文件</td>
-   			<td><input name="files" class="easyui-filebox" data-options="prompt:'请选择文件...'" style="width:100%"/></td>
+   			<td><input class="easyui-filebox" name="files" data-options="prompt:'请选择文件...',buttonText:'选择文件'" style="width:100%"/></td>
    		</tr>
    		<tr>
  			<td>模板名称</td>
@@ -47,6 +47,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</tr>
 	</table>
    	</form>
-   	
+   	</div>
   </body>
 </html>

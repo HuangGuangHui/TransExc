@@ -17,17 +17,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/gray/easyui.css">
 	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/demo/demo.css">
 	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.easyui.min.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="<%=path %>/css/mycss.css">
+	<script type="text/javascript" src="<%=path %>/js/myjs.js"></script>
+	
 	
 	
   </head>
   
-<body>
+<body style="padding: 5px;">
 	<script type="text/javascript">
 		$(function(){
 			$('#w').window('close');
@@ -133,18 +136,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div>月份:<font color="red">*</font></div>
 				<input id="month" name="dx.month" type="text" style="width:100%;height:32px">
 			</div>
+			<div style="font-size: 10px;color: red;margin-bottom: 10px;">温馨提示：带“*”为必填项</div>
 			<div>
-				<input type="submit" class="easyui-linkbutton" iconCls="icon-ok" style="width:100%;height:32px" value="确认添加"/>
+				<input type="submit" class="easyui-linkbutton" iconCls="icon-ok" style="width:100%;height:32px" value="确认添加" onclick="return check()"/>
 			</div>
 		</form>
 	</div>
 	
 	
 	
-	
-	
-	
-	<div class="easyui-panel" title="电信数据" style="width:1600px;padding:10px;height: 450px;" data-options="tools:'#tt'">
+	<div class="easyui-panel" title="电信数据" style="width:100%;padding:10px;height:auto;" data-options="tools:'#tt'">
 		<form action="">
 		快速查询:
 		<select name="month">
@@ -157,9 +158,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<input class="easyui-linkbutton" type="submit" value="查询" style="padding: 5px;width: auto;"/>
 		</form>
 		
-		<table border="0" width="100%" align="center">
-			<tr align="center" style="font-weight: bold;">
-				<td>日期</td>
+		<table class="my_table" width="100%" align="center" border="1" bordercolor="#D3D3D3" style="border-collapse:collapse;">
+			<tr align="center" style="font-weight: bold;background-color: #E6E6E6;">
+				<td style="padding: 5px;">日期</td>
 				<td>设备号</td>
 				<td>终端类型</td>
 				<td>套餐费</td>
@@ -204,7 +205,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 			</c:forEach>
 		</table>
-		<div class="easyui-panel" style="padding: 3px;width: 100%;">
+		<div class="easyui-panel" style="padding: 3px;width: 100%;margin-top: 5px;">
 			<a href="<%=path %>/manual!queryDx?pageOn=1&month=${month}" class="easyui-linkbutton" data-options="plain:true">首页</a>
 			<c:choose>
 				<c:when test="${page.pageOn<=1}">
