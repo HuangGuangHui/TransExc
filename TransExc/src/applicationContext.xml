@@ -32,9 +32,9 @@
 	<bean id="zs_role_ac" class="com.zs.action.ManagerRoleAction">
 		<property name="dao" ref="zs_dao"></property>
 	</bean>
-	
-	
-	
+	<bean id="zs_pcenter_ac" class="com.zs.action.PersonalCenterAction">
+		<property name="dao" ref="zs_dao"></property>
+	</bean>
 	
 	<!-- ************************************* -->
 	<bean id="zs_dao" class="com.zs.dao.BaseDaoOfSpring">

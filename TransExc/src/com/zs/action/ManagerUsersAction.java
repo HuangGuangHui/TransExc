@@ -64,7 +64,7 @@ public class ManagerUsersAction extends MyBaseAction{
 			hql=hql+" and name like '%%'";
 			getRequest().setAttribute("name", "");
 		}
-		if(role!=null) {
+		if(role!=null && !"".equals(role)) {
 			hql=hql+" and role='"+role.trim()+"' ";
 			getRequest().setAttribute("role", role);
 		}else {

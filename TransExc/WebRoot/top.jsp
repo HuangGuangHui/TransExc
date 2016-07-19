@@ -20,7 +20,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/gray/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/jquery-easyui/demo/demo.css">
+	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=path %>/jquery-easyui/jquery.easyui.min.js"></script>
+	
+	
   </head>
   
 <body style="background-color: #F9BE00;margin: 0px;padding: 0px;" >
@@ -36,10 +42,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<span style="font-size: 14px;font-weight: bold;color: #0052A3;float: right;margin-right: 0px;">您还没有登录，请先</span>
 		</c:when>
 		<c:otherwise>
-			<a href="login.jsp" target="_parent">
+			<a onclick="return confirm('确定注销吗?')" href="<%=path %>/center!logout" target="_parent" style="float: right;margin-right: 30px;font-size: 14px;font-weight: bold;color: red;">注销</a>
+			<a href="<%=path %>/center!query" target="right">
 			<span style="font-size: 14px;font-weight: bold;color: #0052A3;float: right;margin-right: 30px;">${user.name }</span>
-			<span style="font-size: 14px;font-weight: bold;color: red;float: right;margin-right: 10px;">${user.r.name}</span>
+			<span style="font-size: 14px;font-weight: bold;color: green;float: right;margin-right: 5px;">${user.r.name}</span>
 			</a>
+			<span style="float: right;font-size: 14px;font-weight: bold;color: #282828;">登陆者：</span>
 		</c:otherwise>
 	</c:choose>
 	

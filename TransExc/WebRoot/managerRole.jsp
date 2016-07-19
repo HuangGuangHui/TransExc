@@ -115,11 +115,11 @@ request.setCharacterEncoding("utf-8");
 				<div>角色权限:</div>
 				<div style="height: 200px;overflow: scroll;">
 				<table id="role_table" width="100%" class="role_list">
-					<c:forEach items="${pers}" var="per">
+					<c:forEach items="${pers}" var="per" varStatus="sta">
 					<tr>
 						<td>
 							<input name="per${per.id }" type="checkbox" value="${per.id }"/>
-							<span>(${per.id })${per.name }</span>
+							<span>${sta.index+1 }.${per.name }</span>
 						</td>
 					</tr>
 					</c:forEach>
@@ -161,7 +161,7 @@ request.setCharacterEncoding("utf-8");
 				<td>${r.description }</td>
 				<td style="width: 60%;font-size: 12px;text-align: left;padding-left: 10px;padding-right: 10px;">
 					<c:forEach items="${r.rolePermissions}" var="rp" varStatus="status">
-					(${rp.permission.id})${rp.permission.name}
+					${status.index+1}.${rp.permission.name}
 					<c:if test="${fn:length(r.rolePermissions)>status.index+1}">
 						,
 					</c:if>

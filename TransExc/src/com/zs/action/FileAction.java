@@ -400,7 +400,13 @@ public class FileAction extends MyBaseAction{
 		getRequest().setAttribute("modelNames", modelNames);
 		return "inputOut";
 	}
-	
+	/*2016年7月19日14:16:58
+	 * 张顺
+	 * 空方法是为了在拦截器那边实现权限控制
+	 * */
+	public String gotoInputInDate() throws UnsupportedEncodingException {
+		return "inputIn";
+	}
 	
 	public String selectModel() throws UnsupportedEncodingException {
 		String modelName=getRequest().getParameter("mname");

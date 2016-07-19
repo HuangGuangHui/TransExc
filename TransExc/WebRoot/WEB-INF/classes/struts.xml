@@ -53,6 +53,12 @@
      <result name="index">/index.jsp</result>
      <result name="role">/managerRole.jsp</result>
  </action>
+ <action name="center" class="zs_pcenter_ac">	
+ 	 <interceptor-ref name="mydefault" />
+     <result name="index">/index.jsp</result>
+     <result name="login">/login.jsp</result>
+     <result name="center">/personalCenter.jsp</result>
+ </action>
 </package>
 </struts>    
   

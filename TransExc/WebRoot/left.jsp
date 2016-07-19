@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="easyui-accordion" style="width:200px;height:auto;">
 	<div title="数据上传" data-options="iconCls:'icon-add'" style="overflow:auto;padding:10px;">
-		<a href="<%=path %>/inputInDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%">上传源数据</a>
+		<a href="<%=path %>/file!gotoInputInDate" target="right" class="easyui-linkbutton c1" style="width:100%">上传源数据</a>
 		<a href="<%=path %>/file!gotoInputOutDate" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">上传最终模板</a>		
 	</div>
 	<div title="数据导出" data-options="iconCls:'icon-print'" style="padding:10px;">
@@ -65,6 +65,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		注意：
 		<br/>
 		1.只能读取xls文件，对xlsx文件不支持，解决办法：打开文件然后点击另存为，选择保存类型为xls保存即可。
+		<br/>
+		<br/>
+		错误编号解释:
+		<br/>
+		691:用户未登录
+		<br/>
+		400:用户权限不够
 		<br/>
 		<br/>
 		详细教程请下载<a href="<%=basePath %>office/office.pptx">韵达报表工具讲解.ppt</a>

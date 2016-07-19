@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<frameset cols="200px,*" frameborder="yes">
 		<frame name="left" src="left.jsp" noresize="noresize"/>
 		<frameset rows="*,50px" frameborder="yes">
-			<frame name="right" src="inputInDate.jsp" noresize="noresize"/>
+			<frame name="right" src="<%=path%>/file!gotoInputInDate" noresize="noresize"/>
 			<frame name="bottom" src="bottom.jsp" noresize="noresize"/>
 		</frameset> 
 	</frameset>
