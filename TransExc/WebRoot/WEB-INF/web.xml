@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <filter>
   	<filter-name>struts2</filter-name>
@@ -13,6 +13,25 @@
   		org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
   	</filter-class>
   </filter>
+  
+  
+  <!-- Spring提供的避免Hibernate懒加载异常的过滤器  
+  让Session在请求解释完成之后再关闭，从而避免懒加载异常
+  <filter>  
+    <filter-name>openSessionInViewFilter</filter-name>  
+    <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>  
+  </filter>  
+    
+    
+   以下2个mapping不可以调换位置   
+    
+  <filter-mapping>  
+    <filter-name>openSessionInViewFilter</filter-name>  
+    <url-pattern>/*</url-pattern>  
+  </filter-mapping>    
+   -->  
+    
+  
   <filter-mapping>
   	<filter-name>struts2</filter-name>
   	<url-pattern>/*</url-pattern>
@@ -27,5 +46,8 @@
     <param-value>/WEB-INF/classes/applicationContext.xml</param-value>
   </context-param>
   
+  
+  
+   
   
   </web-app>

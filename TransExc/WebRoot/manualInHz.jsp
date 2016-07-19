@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="font-size: 10px;color: red;margin-bottom: 10px;">温馨提示：带“*”为必填项</div>
 			<div>
-				<input type="submit" class="easyui-linkbutton" iconCls="icon-ok" style="width:100%;height:32px" value="确认添加" onclick="return check()"/>
+				<input type="submit" class="easyui-linkbutton" iconCls="icon-ok" style="width:100%;height:32px" value="确认" onclick="return check()"/>
 			</div>
 		</form>
 	</div>

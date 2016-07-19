@@ -23,6 +23,18 @@
 	<bean id="zs_model_ac" class="com.zs.action.ModelManagerAction">
 		<property name="dao" ref="zs_dao"></property>
 	</bean>
+	<bean id="zs_login_ac" class="com.zs.action.LoginAction">
+		<property name="dao" ref="zs_dao"></property>
+	</bean>
+	<bean id="zs_users_ac" class="com.zs.action.ManagerUsersAction">
+		<property name="dao" ref="zs_dao"></property>
+	</bean>
+	<bean id="zs_role_ac" class="com.zs.action.ManagerRoleAction">
+		<property name="dao" ref="zs_dao"></property>
+	</bean>
+	
+	
+	
 	
 	<!-- ************************************* -->
 	<bean id="zs_dao" class="com.zs.dao.BaseDaoOfSpring">

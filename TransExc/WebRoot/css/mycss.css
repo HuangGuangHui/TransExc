@@ -100,3 +100,11 @@
 .input_blur{
 	color: #8A8A8A;
 }
+.login_hint{
+	position:absolute;
+	top: 50%;
+	width:100%;
+	margin-top: 122px;
+	color:red;
+	text-align: center;
+}

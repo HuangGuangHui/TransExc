@@ -46,6 +46,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="<%=path %>/model!update" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">修改模板</a>
 		<a href="<%=path %>/model!delete" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">删除模板</a>
 	</div>
+	<div title="系统管理" data-options="iconCls:'icon-system'" style="padding:10px;">
+		<a href="<%=path %>/users!query" target="right" class="easyui-linkbutton c1" style="width:100%">用户管理</a>
+		<a href="<%=path %>/role!query" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">角色管理</a>
+	</div>
 	<div title="使用说明和注意事项" data-options="iconCls:'icon-help'" style="padding:5px;">
 		操作流程：
 		<br/>

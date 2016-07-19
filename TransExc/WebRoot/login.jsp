@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   });
   
   function focus_name(){
-  	if($("#txt_username").val()=="请输入用户名"){
+  	if($("#txt_username").val()=="请输入账号"){
 	  	$("#txt_username").val("");
 	  	$("#txt_username").removeClass("input_blur");
 	  	$("#txt_password").removeClass("input_blur");
@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }
   function blur_name(){
   	if($.trim($("#txt_username").val())==""){
-  		$("#txt_username").val("请输入用户名");
+  		$("#txt_username").val("请输入账号");
   		$("#txt_username").removeClass("input_focus");
   		$("#txt_username").addClass("input_blur");
   		$("#txt_password").removeClass("input_focus");
@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	
-	<form action="">
+	<form action="<%=path %>/login!login" method="post" style="margin:0px;display: inline;">
 	<div class="login_div">
 		<div class="login_div1">
 			<div style="height: 12px;"></div>
@@ -110,14 +110,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="login_div1_b">
 				<center>
 				<div class="login_input_div">
-					<input id="txt_username" class="login_input" type="text" value="请输入用户名" onfocus="focus_name()" onblur="blur_name()"/>
+					<input name="num" id="txt_username" class="login_input" type="text" value="请输入账号" onfocus="focus_name()" onblur="blur_name()"/>
 				</div>
 				</center>
 			</div>
 			<div class="login_div1_b">
 				<center>
 				<div class="login_input_div">
-					<input id="txt_password" class="login_input" type="text" value="请输入密码" onfocus="focus_pass()" onblur="blur_pass()"/>
+					<input name="pass" id="txt_password" class="login_input" type="text" value="请输入密码" onfocus="focus_pass()" onblur="blur_pass()"/>
 				</div>
 				</center>
 			</div>
@@ -140,5 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<img class="login_man" alt="" src="<%=path %>/image/man.png">
 	<img class="login_lock" alt="" src="<%=path %>/image/lock.png">
+	<!-- 这个是提示信息 -->
+	<div class="login_hint">${hint }</div>
   </body>
 </html>

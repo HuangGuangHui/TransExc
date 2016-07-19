@@ -4,23 +4,54 @@
 <constant name="struts.devMode" value="true"></constant>
 <constant name="struts.multipart.maxSize" value="209715200"></constant>
 <package name="a" extends="struts-default" namespace="/">
+  <!-- 定义一个拦截器 -->  
+  <interceptors>  
+      <interceptor name="authority" class="com.zs.interceptor.MyInterceptor">  
+      </interceptor>  
+      <!-- 拦截器栈 -->  
+      <interceptor-stack name="mydefault">  
+          <interceptor-ref name="defaultStack" />  
+          <interceptor-ref name="authority" />  
+      </interceptor-stack>  
+  </interceptors>  
+  
   <action name="file" class="zs_file_ac">	
+  	 <interceptor-ref name="mydefault" />
      <result name="inputIn">/inputInDate.jsp</result>
      <result name="inputOut">/inputOutDate.jsp</result>
      <result name="output">/outputDate.jsp</result>
      <result name="safe">/safe.jsp</result>
   </action>
   <action name="manual" class="zs_manual_ac">	
+  	 <interceptor-ref name="mydefault" />
      <result name="manualInDx">/manualInDx.jsp</result>
      <result name="manualInYd">/manualInYd.jsp</result>
      <result name="manualInHz">/manualInHz.jsp</result>
      <result name="manualDetail">/manualDetail.jsp</result>
  </action>
  <action name="model" class="zs_model_ac">	
+ 	 <interceptor-ref name="mydefault" />
      <result name="modelQuery">/modelQuery.jsp</result>
      <result name="modelAdd">/modelAdd.jsp</result>
      <result name="modelUpdate">/modelUpdate.jsp</result>
      <result name="modelDelete">/modelDelete.jsp</result>
+ </action>
+ <action name="login" class="zs_login_ac">	
+ 	 <!-- 使用此拦截器 -->  
+     <interceptor-ref name="mydefault" />  
+     <result name="index">/index.jsp</result>
+     <result name="login">/login.jsp</result>
+     <result name="safe">/safe.jsp</result>
+ </action>
+ <action name="users" class="zs_users_ac">	
+	 <interceptor-ref name="mydefault" />  
+ 	 <result name="index">/index.jsp</result>
+     <result name="users">/managerUsers.jsp</result>
+ </action>
+ <action name="role" class="zs_role_ac">	
+ 	 <interceptor-ref name="mydefault" />
+     <result name="index">/index.jsp</result>
+     <result name="role">/managerRole.jsp</result>
  </action>
 </package>
 </struts>    
