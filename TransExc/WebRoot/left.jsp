@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="easyui-accordion" style="width:200px;height:auto;">
 	<div title="数据上传" data-options="iconCls:'icon-add'" style="overflow:auto;padding:10px;">
 		<a href="<%=path %>/file!gotoInputInDate" target="right" class="easyui-linkbutton c1" style="width:100%">上传源数据</a>
-		<a href="<%=path %>/file!gotoInputOutDate" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">上传最终模板</a>		
+		<a href="<%=path %>/file!gotoInputOutDate" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">上传最终模版</a>		
 	</div>
 	<div title="数据导出" data-options="iconCls:'icon-print'" style="padding:10px;">
 		<a href="<%=path %>/outputDate.jsp" target="right" class="easyui-linkbutton c1" style="width:100%">导出数据与文件</a>
@@ -40,11 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="<%=path %>/manual!queryHz" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">移动汇总表数据编辑</a>
 		<a href="<%=path %>/manual!queryDetail" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">最终表数据编辑</a>
 	</div>
-	<div title="上传模板管理" data-options="iconCls:'icon-large-smartart'" style="padding:10px;">
-		<a href="<%=path %>/model!query" target="right" class="easyui-linkbutton c1" style="width:100%">查看模板</a>
-		<a href="<%=path %>/modelAdd.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">添加模板</a>
-		<a href="<%=path %>/model!update" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">修改模板</a>
-		<a href="<%=path %>/model!delete" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">删除模板</a>
+	<div title="上传模版管理" data-options="iconCls:'icon-large-smartart'" style="padding:10px;">
+		<a href="<%=path %>/model!query" target="right" class="easyui-linkbutton c1" style="width:100%">查看模版</a>
+		<a href="<%=path %>/modelAdd.jsp" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">添加模版</a>
+		<a href="<%=path %>/model!update" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">修改模版</a>
+		<a href="<%=path %>/model!delete" target="right" class="easyui-linkbutton c1" style="width:100%;margin-top: 2px;">删除模版</a>
 	</div>
 	<div title="系统管理" data-options="iconCls:'icon-system'" style="padding:10px;">
 		<a href="<%=path %>/users!query" target="right" class="easyui-linkbutton c1" style="width:100%">用户管理</a>
@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<br/>
 		1.依次上传所有的源文件
 		<br/>
-		2.上传最终数据的模板或选择模板
+		2.上传最终数据的模版或选择模版
 		<br/>
 		3.处理数据
 		<br/>

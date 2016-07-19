@@ -30,11 +30,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body style="padding: 5px;">
-  	<div class="easyui-panel" title="删除模板" style="width:100%;padding:10px;height: auto;" data-options="tools:'#tt'">
+  	<div class="easyui-panel" title="删除模版" style="width:100%;padding:10px;height: auto;" data-options="tools:'#tt'">
   	<form action="model!delete" method="post">
   	<table width="500" border="0" align="center">
   		<tr>
-  			<td>请选择模板</td>
+  			<td>请选择模版</td>
   			<td width="380">
   				<select name="mname">
 					<c:forEach items="${models}" var="model">

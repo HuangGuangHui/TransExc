@@ -108,7 +108,7 @@ request.setCharacterEncoding("utf-8");
 				<input name="mod.invoice" class="easyui-textbox" style="width:100%;height:32px">
 			</div>
 			<div style="margin-bottom:20px">
-				<div>模板:<font color="red">*</font>
+				<div>模版:<font color="red">*</font>
 					<select id="key" name="key">
 						<c:forEach items="${models}" var="model">
 						<option value="${model.modelNameKey }">${model.modelName}</option>
@@ -125,9 +125,9 @@ request.setCharacterEncoding("utf-8");
 	
 	
   
-	<div class="easyui-panel" title="查看模板" style="width:100%;padding:10px;height: auto;" data-options="tools:'#tt'"> 
+	<div class="easyui-panel" title="查看模版" style="width:100%;padding:10px;height: auto;" data-options="tools:'#tt'"> 
 		<form action="model!query" method="post">
-		请选择模板名称:
+		请选择模版名称:
 		<select name="mname">
 			<c:forEach items="${models}" var="model">
 			<option value="${model.modelNameKey }">${model.modelName}</option>
@@ -137,7 +137,7 @@ request.setCharacterEncoding("utf-8");
 		</form>
 		<table width="100%" align="center" border="1" bordercolor="#D3D3D3" style="border-collapse:collapse;">
 			<tr align="center" style="font-weight: bold;background-color: #E6E6E6;">
-				<td style="padding: 5px;">模板名称</td>
+				<td style="padding: 5px;">模版名称</td>
 				<td>类型</td>
 				<td>二级部门</td>
 				<td>备注</td>

@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<form action="file!uploadOutData" method="post" enctype="multipart/form-data">
 	  		<table width="580px;" border="0" align="center">
 	    		<tr>
-	    			<td>最终模板文件</td>
+	    			<td>最终模版文件</td>
 	    			<td><input class="easyui-filebox" name="files" data-options="prompt:'请选择文件...',buttonText:'选择文件'" style="width:100%"/></td>
 	    		</tr>
 	    		<tr>
@@ -44,16 +44,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  			</td>
 		  		</tr>
 		  		<tr>
-		  			<td colspan="2"><input class="easyui-linkbutton" type="submit" value="上传最终模板" style="padding: 5px;width: 100%;margin-top: 15px;"/></td>
+		  			<td colspan="2"><input class="easyui-linkbutton" type="submit" value="上传最终模版" style="padding: 5px;width: 100%;margin-top: 15px;"/></td>
 		  		</tr>
 	  		</table>
 	    	</form>
     	</div>
-    	<div title="选择最终模板" style="padding:10px">
+    	<div title="选择最终模版" style="padding:10px">
     		<form action="file!selectModel" method="post">
     		<table width="580px;" border="0" align="center">
     			<tr>
-    				<td>选择一个模板</td>
+    				<td>选择一个模版</td>
     				<td>
     					<select name="mname">
     						<c:forEach items="${modelNames}" var="name">

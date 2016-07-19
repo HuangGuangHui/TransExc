@@ -33,13 +33,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<form action="model!add" method="post" enctype="multipart/form-data">
 	<table width="580px;" border="0" align="center">
    		<tr>
-   			<td>最终模板文件</td>
+   			<td>最终模版文件</td>
    			<td><input class="easyui-filebox" name="files" data-options="prompt:'请选择文件...',buttonText:'选择文件'" style="width:100%"/></td>
    		</tr>
    		<tr>
- 			<td>模板名称</td>
+ 			<td>模版名称</td>
   			<td>
- 				 <input name="modelName" class="easyui-textbox" data-options="prompt:'请输入模板名称'" style="width:100%"/>			
+ 				 <input name="modelName" class="easyui-textbox" data-options="prompt:'请输入模版名称'" style="width:100%"/>			
   			</td>
   		</tr>
   		<tr>
