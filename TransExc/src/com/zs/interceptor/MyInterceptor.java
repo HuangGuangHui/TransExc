@@ -34,13 +34,18 @@ public class MyInterceptor extends AbstractInterceptor{
 	String reqPamrs;
 	Object user;
 	
+	public IBaseDaoOfSpring getDao() {
+		return dao;
+	}
+	public void setDao(IBaseDaoOfSpring dao) {
+		this.dao = dao;
+	}
+
 	private void allInit(ActionInvocation arg0) {
 		// 取得请求相关的ActionContext实例  
 		request = ServletActionContext.getRequest();
 		response = ServletActionContext.getResponse();
 		//获取bean
-		appContext = new ClassPathXmlApplicationContext("/applicationContext.xml");
-    	dao = (IBaseDaoOfSpring) appContext.getBean("zs_dao");
     	//获取其他信息
 		ActionContext ctx = arg0.getInvocationContext();  
         session = ctx.getSession();  

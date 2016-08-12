@@ -7,7 +7,9 @@
 <hibernate-configuration>
 
 <session-factory>
-	<property name="proxool.pool_alias">DBPool</property>
+	
+ 	
+ 	<property name="proxool.pool_alias">DBPool</property>
 	<property name="proxool.xml">proxool.xml</property>
 	<property name="connection.provider_class">
 		org.hibernate.connection.ProxoolConnectionProvider
@@ -15,7 +17,7 @@
 	<property name="dialect">
 		org.hibernate.dialect.MySQLDialect
 	</property>
-	
+ 	
 	<mapping resource="com/zs/entity/OutDxDetail.hbm.xml" />
 	<mapping resource="com/zs/entity/InDx.hbm.xml" />
 	<mapping resource="com/zs/entity/InYd.hbm.xml" />

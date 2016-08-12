@@ -35,7 +35,10 @@
 	<bean id="zs_pcenter_ac" class="com.zs.action.PersonalCenterAction">
 		<property name="dao" ref="zs_dao"></property>
 	</bean>
-	
+	<!-- **************拦截器************* -->
+	<bean id="zs_interceptor" class="com.zs.interceptor.MyInterceptor">
+		<property name="dao" ref="zs_dao"></property>
+	</bean>
 	<!-- ************************************* -->
 	<bean id="zs_dao" class="com.zs.dao.BaseDaoOfSpring">
 		<property name="ht" ref="hibtemp"></property>
