@@ -373,7 +373,7 @@ public class FileAction extends MyBaseAction{
 //		errorInHzs=null;
 		//查询最终表数据
 		List<OutDxDetail> list=dao.find("from OutDxDetail where month='"+getTime()+"'");
-		boolean isSuc=new ExportExcOfJxl().export(list); 
+		boolean isSuc=new ExportExcOfJxl().export(list,getSession().getServletContext().getRealPath("/")); 
 //		System.out.println("-------成功与否------>>"+isSuc);
 		getRequest().setAttribute("isSuc", isSuc);
 		return "output";

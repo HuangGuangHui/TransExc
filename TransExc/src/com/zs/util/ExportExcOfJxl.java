@@ -35,12 +35,12 @@ public class ExportExcOfJxl {
 	
 	
 	
-	public boolean export(List<OutDxDetail> data) {
+	public boolean export(List<OutDxDetail> data,String path) {
 		boolean isSucc=false;
 		OutputStream os = null;
 		WritableWorkbook wwb = null;
 		try {
-			String filePath = "D:/apache-tomcat-6.0.37/webapps/TransExc/output/outputExcle.xls";
+			String filePath = path+"output/outputExcle.xls";
 			File file = new File(filePath);
 			//如果指定文件不存在，则新建该文件
 			if(file.isFile()){

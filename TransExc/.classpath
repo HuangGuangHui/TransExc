@@ -69,5 +69,9 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-json-plugin-2.2.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.2.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.2.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jarjar-0.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/proxool-0.9.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/proxool-cglib.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

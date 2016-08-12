@@ -24,7 +24,6 @@ public class BaseDaoOfJDBC {
 		try {
 			con=DBUtils.openDB();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		List list=new ArrayList();
